@@ -14,7 +14,7 @@ public class SecurityConfig {
     
     @Bean
     @SuppressWarnings("removal")
-    public SecurityFilterChain securityFilterChain(HttpSecurity http,ErrorHandler e) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http,CustomAuthenticationEntryPoint e) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(m->{
             m.requestMatchers("/login").permitAll();
