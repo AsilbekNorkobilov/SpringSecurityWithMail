@@ -1,4 +1,4 @@
-package org.example.securityconfig.config;
+package org.example.securityconfig.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +14,13 @@ public class SecurityConfig {
     
     @Bean
     @SuppressWarnings("removal")
-    public SecurityFilterChain securityFilterChain(HttpSecurity http,CustomAuthenticationEntryPoint e) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, CustomAuthenticationEntryPoint e) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(m->{
-            m.requestMatchers("/login").permitAll();
+            m.requestMatchers("/api/auth/**").permitAll();
+            m.requestMatchers("/api/test/all").permitAll();
+            m.requestMatchers("api/test/user").hasRole("USER");
+            m.requestMatchers("api/test/admin").hasRole("ADMIN");
             m.anyRequest().authenticated();
         });
         http.sessionManagement(m->m.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

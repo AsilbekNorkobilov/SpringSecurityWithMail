@@ -1,4 +1,4 @@
-package org.example.securityconfig.config;
+package org.example.securityconfig.security;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

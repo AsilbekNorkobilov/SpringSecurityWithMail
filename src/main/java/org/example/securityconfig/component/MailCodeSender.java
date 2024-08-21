@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MailSender {
+public class MailCodeSender {
     private final JavaMailSender javaMailSender;
 
     @Async
@@ -16,7 +16,7 @@ public class MailSender {
         SimpleMailMessage mailMessage=new SimpleMailMessage();
         mailMessage.setSubject("Auth Code");
         mailMessage.setText("1234");
-        mailMessage.setTo();
+        mailMessage.setTo("4steeve82@gmail.com");
         javaMailSender.send(mailMessage);
     }
 }
