@@ -32,7 +32,7 @@ public class Runner implements CommandLineRunner {
             User admin=User.builder()
                     .email("a@gmail.com")
                     .password(passwordEncoder.encode("root123"))
-                    .roles(List.of(roleAdmin,roleUser))
+                    .roles(List.of(roleAdmin))
                     .build();
             userRepository.save(admin);
         }

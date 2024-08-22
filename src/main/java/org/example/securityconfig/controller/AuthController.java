@@ -13,8 +13,6 @@ public class AuthController {
 
     @PostMapping("login")
     public String login(@RequestBody LoginDto loginDto){
-        System.out.println(loginDto.getEmail());
-        System.out.println(loginDto.getPassword());
         return authService.login(loginDto);
     }
 
