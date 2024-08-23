@@ -1,7 +1,12 @@
 package org.example.securityconfig.service;
 
-import org.example.securityconfig.dto.LoginDto;
+import jakarta.servlet.http.HttpServletRequest;
+import org.example.securityconfig.dto.ReqDto;
 
 public interface AuthService {
-    String login(LoginDto loginDto);
+    String login(ReqDto loginDto);
+
+    String register(ReqDto reqDto);
+
+    String confirmMailCodeAndRegister(Integer code, HttpServletRequest request);
 }

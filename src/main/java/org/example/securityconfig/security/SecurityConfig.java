@@ -26,7 +26,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http, CustomAuthenticationEntryPoint e) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(m->{
-            m.requestMatchers("/api/auth/**").permitAll();
+            m.requestMatchers("/api/auth/login").permitAll();
+            m.requestMatchers("/api/auth/register").permitAll();
             m.requestMatchers("/api/test/all").permitAll();
             m.requestMatchers("api/test/user").hasRole("USER");
             m.requestMatchers("api/test/admin").hasRole("ADMIN");

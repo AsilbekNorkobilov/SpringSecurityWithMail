@@ -12,11 +12,11 @@ public class MailCodeSender {
     private final JavaMailSender javaMailSender;
 
     @Async
-    public void sendMessage(){
+    public void sendMessage(Integer code, String email){
         SimpleMailMessage mailMessage=new SimpleMailMessage();
         mailMessage.setSubject("Auth Code");
-        mailMessage.setText("1234");
-        mailMessage.setTo("4steeve82@gmail.com");
+        mailMessage.setText("Your verification code is :"+code);
+        mailMessage.setTo(email);
         javaMailSender.send(mailMessage);
     }
 }
