@@ -22,7 +22,6 @@ public class SecurityConfig {
     private final CustomUserDetailsService customUserDetailsService;
     
     @Bean
-    @SuppressWarnings("removal")
     public SecurityFilterChain securityFilterChain(HttpSecurity http, CustomAuthenticationEntryPoint e) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(m->{
@@ -35,8 +34,8 @@ public class SecurityConfig {
         });
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         http.sessionManagement(m->m.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        http.exceptionHandling()
-                .authenticationEntryPoint(e);
+        http.exceptionHandling(exceptionHandling->
+            exceptionHandling.authenticationEntryPoint(e));
         return http.build();
     }
 
