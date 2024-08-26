@@ -34,7 +34,13 @@ public class Runner implements CommandLineRunner {
                     .password(passwordEncoder.encode("root123"))
                     .roles(List.of(roleAdmin))
                     .build();
+            User user=User.builder()
+                    .email("b@gmail.com")
+                    .password(passwordEncoder.encode("root123"))
+                    .roles(List.of(roleUser))
+                    .build();
             userRepository.save(admin);
+            userRepository.save(user);
         }
     }
 }

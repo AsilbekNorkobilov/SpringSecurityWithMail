@@ -24,7 +24,10 @@ public class User implements UserDetails {
     @Column(name = "id", nullable = false)
     private UUID id;
 
+
+    @Column(unique = true)
     private String email;
+
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
