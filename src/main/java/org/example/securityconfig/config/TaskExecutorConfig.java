@@ -13,6 +13,7 @@ public class TaskExecutorConfig {
         executor.setCorePoolSize(5);
         executor.setMaxPoolSize(10);
         executor.setQueueCapacity(100);
+        executor.setKeepAliveSeconds(30);
         executor.setThreadNamePrefix("taskExecutor");
         executor.initialize();
         return executor;
