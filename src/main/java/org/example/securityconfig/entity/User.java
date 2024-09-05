@@ -1,6 +1,10 @@
 package org.example.securityconfig.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,10 +27,18 @@ public class User implements UserDetails {
     private UUID id;
 
 
+    @Email
+    @NotBlank
+    @NotEmpty
+    @NotNull
     @Column(unique = true)
     private String email;
 
+    @NotBlank
+    @NotEmpty
+    @NotNull
     private String password;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
