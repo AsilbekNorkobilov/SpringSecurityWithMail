@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CurrentUser {
-    public Object getMe(){
+    public String getMe(){
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
-        return authentication.getPrincipal();
+        return (String) authentication.getPrincipal();
     }
 }
