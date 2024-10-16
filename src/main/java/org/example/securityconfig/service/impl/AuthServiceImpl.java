@@ -52,7 +52,8 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public TokenDto confirmMailCodeAndRegister(Integer code, HttpServletRequest request) {
-        String confirmToken = request.getHeader("Confirm");
+        String confirm = request.getHeader("Confirm");
+        String confirmToken=confirm.substring(8);
         Integer mailCode = jwtUtil.getMailCode(confirmToken);
         ReqDto reqDto = jwtUtil.getReqDto(confirmToken);
         if (code.equals(mailCode)){
